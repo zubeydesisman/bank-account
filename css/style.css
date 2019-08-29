@@ -1,0 +1,19 @@
+.container {
+  margin-top: 40px;
+  border: 1px solid darkgray;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
