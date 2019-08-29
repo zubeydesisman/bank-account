@@ -1,38 +1,57 @@
 
-function BankAccount(name, initDepo, depoAmount, withAmount,currBalance) {
+function BankAccount(name, initDepo, withAmount, depoAmount, currBalance) {
   this.Name = name,
   this.initDepo = initDepo
-  this.depoAmount  = depoAmount,
   this.withAmount = withAmount,
-  this.currBalance = currBalance
+  this.depoAmount = depoAmount,
+  this.currBalance = 0
 }
 
 
-BankAccount.prototype.register = function(name) {
-  this.name = $("input#name").val();
-  console.log(this.name);
+BankAccount.prototype.register = function() {
+  this.currBalance = this.initDepo;
 }
 
-
-  BankAccount.prototype.calculcurrBalance = function(){
-  this.currBalance = this.initDepo + this.depoAmount - this.withAmount;
-   }
+BankAccount.prototype.calcurrBalance = function() {
+  this.currBalance = this.currBalance - inputtedwithAmount;
+}
 
 
 
 $(document).ready(function() {
-
-  $("form#name-section").submit(function(event) {
+$("form#register-section").submit(function(event) {
     event.preventDefault();
-    var inputtedinitDepo = $("input#initDepo").val();
+    var inputtedinitDepo = parseInt($("input#initDepo").val());
+    console.log(inputtedinitDepo);
     var inputtedName = $("input#name").val();
     console.log(inputtedName);
-    var inputteddepoAmount = $("input#depoAmount").val();
-    var inputtedwithAmount = $("input#withAmount").val();
 
-    var bankAccount = new BankAccount(inputtedName, inputtedinitDepo, inputteddepoAmount, inputtedwithAmount, currBalance);
-     bankAccount.calculcurrBalance();
-console.log(bankAccount.currBalance);
-  });
+
+
+
+    var bankAccount = new BankAccount(inputtedName, inputtedinitDepo, inputtedwithAmount, inputtedepoAmount);
+  bankAccount.register();
+  console.log("show me", bankAccount.currBalance);
+   });
+   $("form#fund-section").submit(function(event) {
+       event.preventDefault();
+         var inputtedinitDepo = parseInt($("input#initDepo").val());
+         var inputtedName = $("input#name").val();
+         var inputtedwithAmount = parseInt($("input#withAmount").val());
+         var inputtedepoAmount = parseInt($("input#depoAmount").val());
+       var bankAccount = new BankAccount(inputtedName, inputtedinitDepo, inputtedwithAmount, inputtedepoAmount);
+
+        bankAccount.calcurrBalance();
+        console.log("show me", bankAccount.currBalance);
+
+
+
+
 });
-//var currentBalance =
+});
+
+var inputtedwithAmount = parseInt($("input#withAmount").val());
+var inputtedepoAmount = parseInt($("input#depoAmount").val());
+//   console.log(inputtedwithAmount);
+  //console.log(inputteddepoAmount);
+  //  bankAccount.calculcurrBalance();
